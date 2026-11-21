@@ -1,460 +1,193 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="light">
-  <title>Surat kecil buat Otsita Kusuma 💌</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Caveat:wght@600;700&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --milk: #ffe3ea;
-      --petal: #ff8fab;
-      --rose: #e5516f;
-      --butter: #ffe48a;
-      --cream: #fffaf0;
-      --ink: #7a2e4a;
-      box-sizing: border-box;
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Surat kecil buat kamu 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --milk:#ffe3ea; --petal:#ff8fab; --rose:#e5516f; --butter:#ffe48a; --cream:#fffaf0; --ink:#7a2e4a;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;min-height:100%;color:var(--ink);
+  font-family:'Gaegu','Comic Sans MS','Segoe Print',cursive;font-size:20px;line-height:1.45;
+  background:
+    radial-gradient(circle at 12% 18%,#fff 0 3px,transparent 4px) 0 0/46px 46px,
+    radial-gradient(circle at 70% 60%,rgba(255,255,255,.7) 0 2px,transparent 3px) 0 0/38px 38px,
+    var(--milk);
+  overflow-x:hidden;
+}
+.stage{min-height:100vh;display:grid;place-items:center;padding:22px 18px;position:relative}
+.hidden{display:none!important}
 
-    *,
-    *::before,
-    *::after {
-      box-sizing: inherit
-    }
+.petal{position:fixed;top:-8vh;font-size:20px;pointer-events:none;animation:fall linear forwards;z-index:5}
+@keyframes fall{to{transform:translateY(115vh) rotate(360deg)}}
 
-    html {
-      height: 100%;
-      scroll-padding-top: env(safe-area-inset-top, 0px)
-    }
+.env-wrap{text-align:center}
+.env-wrap .hint{font-family:'Caveat',cursive;font-size:30px;margin:0 0 22px}
+.envelope{
+  position:relative;width:min(300px,78vw);aspect-ratio:3/2;margin:0 auto;border:0;padding:0;cursor:pointer;display:block;
+  background:#ffc2d1;border-radius:6px;box-shadow:0 14px 0 -6px #f7a8bc,0 18px 30px rgba(229,81,111,.25);
+  animation:bob 2.4s ease-in-out infinite;
+}
+.envelope::before{content:"";position:absolute;inset:0;border-radius:6px;
+  background:linear-gradient(to top right,transparent 49.5%,#ffb0c4 50%) left/50% 100% no-repeat,
+             linear-gradient(to top left,transparent 49.5%,#ffb0c4 50%) right/50% 100% no-repeat}
+.envelope .flap{position:absolute;left:0;right:0;top:0;height:58%;background:#ff9fb7;
+  clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s}
+.envelope .seal{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;
+  background:var(--rose);color:#fff;display:grid;place-items:center;font-size:26px;
+  box-shadow:inset 0 -4px 0 rgba(0,0,0,.12),0 3px 6px rgba(0,0,0,.2);z-index:2;transition:opacity .3s}
+.envelope.open{animation:none}
+.envelope.open .flap{transform:rotateX(180deg)}
+.envelope.open .seal{opacity:0}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-1.5deg)}}
 
-    body {
-      margin: 0;
-      min-height: 100%;
-      color: var(--ink);
-      font-family: 'Gaegu', 'Comic Sans MS', 'Segoe Print', cursive;
-      font-size: 20px;
-      line-height: 1.45;
-      background:
-        radial-gradient(circle at 12% 18%, #fff 0 3px, transparent 4px) 0 0/46px 46px,
-        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, .7) 0 2px, transparent 3px) 0 0/38px 38px,
-        var(--milk);
-      overflow-x: hidden;
-    }
+.letter{
+  position:relative;width:min(380px,100%);background-color:var(--cream);padding:46px 26px 28px 44px;
+  border-radius:4px 4px 14px 14px;transform:rotate(-1deg);
+  box-shadow:0 2px 0 #f1dcc9,0 22px 40px rgba(229,81,111,.22);
+  background-image:
+    linear-gradient(to right,transparent 34px,#ffb3c4 34px 35.5px,transparent 35.5px),
+    repeating-linear-gradient(transparent 0 28px,#f6dfe4 28px 29px);
+  animation:unfold .7s cubic-bezier(.2,1.3,.4,1);
+}
+@keyframes unfold{from{transform:scale(.6) rotate(-6deg);opacity:0}}
+.tape{position:absolute;top:-14px;left:50%;width:110px;height:30px;margin-left:-55px;transform:rotate(3deg);
+  background:repeating-linear-gradient(45deg,rgba(255,228,138,.92) 0 8px,rgba(255,244,190,.92) 8px 16px);
+  box-shadow:0 2px 4px rgba(0,0,0,.08)}
+.letter h1{font-family:'Caveat',cursive;font-weight:700;font-size:40px;line-height:1;margin:0 0 14px;color:var(--rose)}
+.line{margin:0 0 10px;opacity:0;transform:translateY(6px);transition:opacity .7s,transform .7s}
+.line.show{opacity:1;transform:none}
+.line b{background:linear-gradient(transparent 55%,var(--butter) 55%);font-weight:700}
+.line.sign{font-family:'Caveat',cursive;font-size:30px;text-align:right;margin:6px 6px 0 0}
 
-    .stage {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 22px 18px;
-      position: relative
-    }
+.actions{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:12px;min-height:130px;
+  opacity:0;transition:opacity .6s}
+.actions.show{opacity:1}
+.btn{font:inherit;font-weight:700;border:0;border-radius:999px;cursor:pointer;padding:13px 26px;
+  transition:transform .25s cubic-bezier(.3,1.6,.5,1);-webkit-tap-highlight-color:transparent}
+#yes{background:var(--rose);color:#fff;font-size:21px;box-shadow:0 5px 0 #b93758}
+#no{background:transparent;color:#a5707f;font-size:17px;padding:6px 14px;text-decoration:underline dotted}
+.btn:focus-visible{outline:3px solid var(--butter);outline-offset:3px}
 
-    .hidden {
-      display: none !important
-    }
+.voucher{text-align:center;width:min(360px,100%);animation:unfold .8s cubic-bezier(.2,1.3,.4,1)}
+.voucher h2{font-family:'Caveat',cursive;font-size:42px;line-height:1.05;margin:0 0 8px;color:var(--rose)}
+.voucher p{margin:0 0 18px}
+.ticket{
+  position:relative;background:var(--butter);padding:22px 22px 20px;margin:0 8px;transform:rotate(1.5deg);
+  -webkit-mask:radial-gradient(circle 11px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,
+               radial-gradient(circle 11px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;
+  mask:radial-gradient(circle 11px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,
+       radial-gradient(circle 11px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;
+}
+.ticket-wrap{filter:drop-shadow(0 12px 14px rgba(229,81,111,.25))}
+.ticket .in{border:2px dashed var(--rose);border-radius:10px;padding:14px 10px}
+.ticket .t{font-family:'Caveat',cursive;font-size:30px;margin:0 0 6px;color:var(--rose)}
+.ticket ul{list-style:none;margin:0;padding:0;font-size:21px}
+.ticket li{margin:4px 0}
+.ticket small{display:block;margin-top:10px;font-size:16px;opacity:.8}
+.voucher .again{margin-top:26px;font-family:'Caveat',cursive;font-size:26px}
 
-    .petal {
-      position: fixed;
-      top: -8vh;
-      font-size: 20px;
-      pointer-events: none;
-      animation: fall linear forwards;
-      z-index: 5
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(115vh) rotate(360deg)
-      }
-    }
-
-    .env-wrap {
-      text-align: center
-    }
-
-    .env-wrap .hint {
-      font-family: 'Caveat', cursive;
-      font-size: 30px;
-      margin: 0 0 22px
-    }
-
-    .envelope {
-      position: relative;
-      width: min(300px, 78vw);
-      aspect-ratio: 3/2;
-      margin: 0 auto;
-      border: 0;
-      padding: 0;
-      cursor: pointer;
-      display: block;
-      background: #ffc2d1;
-      border-radius: 6px;
-      box-shadow: 0 14px 0 -6px #f7a8bc, 0 18px 30px rgba(229, 81, 111, .25);
-      animation: bob 2.4s ease-in-out infinite;
-    }
-
-    .envelope::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 6px;
-      background: linear-gradient(to top right, transparent 49.5%, #ffb0c4 50%) left/50% 100% no-repeat,
-        linear-gradient(to top left, transparent 49.5%, #ffb0c4 50%) right/50% 100% no-repeat
-    }
-
-    .envelope .flap {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      height: 58%;
-      background: #ff9fb7;
-      clip-path: polygon(0 0, 100% 0, 50% 100%);
-      transform-origin: top;
-      transition: transform .6s
-    }
-
-    .envelope .seal {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 54px;
-      height: 54px;
-      margin: -27px 0 0 -27px;
-      border-radius: 50%;
-      background: var(--rose);
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-size: 26px;
-      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, .12), 0 3px 6px rgba(0, 0, 0, .2);
-      z-index: 2;
-      transition: opacity .3s
-    }
-
-    .envelope.open {
-      animation: none
-    }
-
-    .envelope.open .flap {
-      transform: rotateX(180deg)
-    }
-
-    .envelope.open .seal {
-      opacity: 0
-    }
-
-    @keyframes bob {
-      50% {
-        transform: translateY(-8px) rotate(-1.5deg)
-      }
-    }
-
-    .letter {
-      position: relative;
-      width: min(380px, 100%);
-      background-color: var(--cream);
-      padding: 46px 26px 28px 44px;
-      border-radius: 4px 4px 14px 14px;
-      transform: rotate(-1deg);
-      box-shadow: 0 2px 0 #f1dcc9, 0 22px 40px rgba(229, 81, 111, .22);
-      background-image:
-        linear-gradient(to right, transparent 34px, #ffb3c4 34px 35.5px, transparent 35.5px),
-        repeating-linear-gradient(transparent 0 28px, #f6dfe4 28px 29px);
-      animation: unfold .7s cubic-bezier(.2, 1.3, .4, 1);
-    }
-
-    @keyframes unfold {
-      from {
-        transform: scale(.6) rotate(-6deg);
-        opacity: 0
-      }
-    }
-
-    .tape {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      width: 110px;
-      height: 30px;
-      margin-left: -55px;
-      transform: rotate(3deg);
-      background: repeating-linear-gradient(45deg, rgba(255, 228, 138, .92) 0 8px, rgba(255, 244, 190, .92) 8px 16px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .08)
-    }
-
-    .letter h1 {
-      font-family: 'Caveat', cursive;
-      font-weight: 700;
-      font-size: 40px;
-      line-height: 1;
-      margin: 0 0 14px;
-      color: var(--rose)
-    }
-
-    .line {
-      margin: 0 0 10px;
-      opacity: 0;
-      transform: translateY(6px);
-      transition: opacity .7s, transform .7s
-    }
-
-    .line.show {
-      opacity: 1;
-      transform: none
-    }
-
-    .line b {
-      background: linear-gradient(transparent 55%, var(--butter) 55%);
-      font-weight: 700
-    }
-
-    .line.sign {
-      font-family: 'Caveat', cursive;
-      font-size: 30px;
-      text-align: right;
-      margin: 6px 6px 0 0
-    }
-
-    .actions {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      min-height: 130px;
-      opacity: 0;
-      transition: opacity .6s
-    }
-
-    .actions.show {
-      opacity: 1
-    }
-
-    .btn {
-      font: inherit;
-      font-weight: 700;
-      border: 0;
-      border-radius: 999px;
-      cursor: pointer;
-      padding: 13px 26px;
-      transition: transform .25s cubic-bezier(.3, 1.6, .5, 1);
-      -webkit-tap-highlight-color: transparent
-    }
-
-    #yes {
-      background: var(--rose);
-      color: #fff;
-      font-size: 21px;
-      box-shadow: 0 5px 0 #b93758
-    }
-
-    #no {
-      background: transparent;
-      color: #a5707f;
-      font-size: 17px;
-      padding: 6px 14px;
-      text-decoration: underline dotted
-    }
-
-    .btn:focus-visible {
-      outline: 3px solid var(--butter);
-      outline-offset: 3px
-    }
-
-    .voucher {
-      text-align: center;
-      width: min(360px, 100%);
-      animation: unfold .8s cubic-bezier(.2, 1.3, .4, 1)
-    }
-
-    .voucher h2 {
-      font-family: 'Caveat', cursive;
-      font-size: 42px;
-      line-height: 1.05;
-      margin: 0 0 8px;
-      color: var(--rose)
-    }
-
-    .voucher p {
-      margin: 0 0 18px
-    }
-
-    .ticket {
-      position: relative;
-      background: var(--butter);
-      padding: 22px 22px 20px;
-      margin: 0 8px;
-      transform: rotate(1.5deg);
-      -webkit-mask: radial-gradient(circle 11px at 0 50%, #0000 98%, #000) left/51% 100% no-repeat,
-        radial-gradient(circle 11px at 100% 50%, #0000 98%, #000) right/51% 100% no-repeat;
-      mask: radial-gradient(circle 11px at 0 50%, #0000 98%, #000) left/51% 100% no-repeat,
-        radial-gradient(circle 11px at 100% 50%, #0000 98%, #000) right/51% 100% no-repeat;
-    }
-
-    .ticket-wrap {
-      filter: drop-shadow(0 12px 14px rgba(229, 81, 111, .25))
-    }
-
-    .ticket .in {
-      border: 2px dashed var(--rose);
-      border-radius: 10px;
-      padding: 14px 10px
-    }
-
-    .ticket .t {
-      font-family: 'Caveat', cursive;
-      font-size: 30px;
-      margin: 0 0 6px;
-      color: var(--rose)
-    }
-
-    .ticket ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 21px
-    }
-
-    .ticket li {
-      margin: 4px 0
-    }
-
-    .ticket small {
-      display: block;
-      margin-top: 10px;
-      font-size: 16px;
-      opacity: .8
-    }
-
-    .voucher .again {
-      margin-top: 26px;
-      font-family: 'Caveat', cursive;
-      font-size: 26px
-    }
-
-    @media (prefers-reduced-motion:reduce) {
-      * {
-        animation: none !important;
-        transition: none !important
-      }
-
-      .line {
-        opacity: 1;
-        transform: none
-      }
-
-      .actions {
-        opacity: 1
-      }
-    }
-  </style>
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.line{opacity:1;transform:none}.actions{opacity:1}}
+</style>
 </head>
-
 <body>
 
-  <main class="stage" id="s1">
-    <div class="env-wrap">
-      <p class="hint">ada surat kecil untuk sayang</p>
-      <button class="envelope" id="env" aria-label="Buka surat">
-        <span class="flap"></span><span class="seal">♥</span>
-      </button>
-      <p style="margin-top:26px;opacity:.7">(tekan amplopnya)</p>
+<main class="stage" id="s1">
+  <div class="env-wrap">
+    <p class="hint">ada surat kecil buat kamu…</p>
+    <button class="envelope" id="env" aria-label="Buka surat">
+      <span class="flap"></span><span class="seal">♥</span>
+    </button>
+    <p style="margin-top:26px;opacity:.7">(ketuk amplopnya ya)</p>
+  </div>
+</main>
+
+<main class="stage hidden" id="s2">
+  <article class="letter">
+    <span class="tape"></span>
+    <h1>Untuk kamu, sayangku</h1>
+    <p class="line">Aku tau kemarin aku bikin kamu kesel. Dan kamu berhak banget kesel.</p>
+    <p class="line">Aku lebih suka lihat kamu <b>ketawa sampai matanya hilang</b> daripada cemberut gara-gara aku.</p>
+    <p class="line">Maaf ya, aku janji bakal lebih dengerin dan lebih peka. Aku nggak mau jadi alasan kamu sedih.</p>
+    <p class="line">Kamu itu bagian favoritku dari setiap hari. Boleh nggak aku dimaafin? 🥺</p>
+    <p class="line sign">yang sayang kamu banget</p>
+    <div class="actions" id="actions">
+      <button class="btn" id="yes">Iya, aku maafin 💗</button>
+      <button class="btn" id="no">belum mau…</button>
     </div>
-  </main>
+  </article>
+</main>
 
-  <main class="stage hidden" id="s2">
-    <article class="letter">
-      <span class="tape"></span>
-      <h1>Untuk osi sayangku</h1>
-      <p class="line">Kay tau kemarin kay bikin sayang marah.</p>
-      <p class="line">Kay lebih suka liat sayang <b>ketawa sampai gigi ny keliatan, dan yapping</b> daripada marah
-        gara-gara kay.
-      </p>
-      <p class="line">Maafin kay ya sayanggkuuu, walaupun sampai sekarang kay belum tau sayang marah karne ap, tapi kay
-        nda mau jadi alasan sayang
-        marah, sedih ataupun badmood.</p>
-      <p class="line">You're my favourite part in my everyday life. Maafin kay ya sayang? 🥺</p>
-      <p class="line sign">— kay</p>
-      <div class="actions" id="actions">
-        <button class="btn" id="yes">Iya aku maafin 💗</button>
-        <button class="btn" id="no">nda mau!</button>
-      </div>
-    </article>
-  </main>
+<main class="stage hidden" id="s3">
+  <section class="voucher">
+    <h2>Yeay, makasih sayang!</h2>
+    <p>Hatiku langsung lega. Ini hadiah kecil dariku:</p>
+    <div class="ticket-wrap"><div class="ticket"><div class="in">
+      <p class="t">Voucher Maafin Aku</p>
+      <ul>
+        <li>🍓 1x jajan makanan favorit kamu</li>
+        <li>🤗 1x peluk yang lama</li>
+        <li>🌷 1x aku dengerin kamu cerita</li>
+      </ul>
+      <small>berlaku selamanya, tanpa batas waktu</small>
+    </div></div></div>
+    <p class="again">sampai ketemu ya, aku kangen 💛</p>
+  </section>
+</main>
 
-  <main class="stage hidden" id="s3">
-    <section class="voucher">
-      <h2>Yeay, makasih sayang!!!</h2>
-      <p>Kay senang krn sayang udah gamarah. Ini hadiah kecil dari kay:</p>
-      <div class="ticket-wrap">
-        <div class="ticket">
-          <div class="in">
-            <p class="t">Voucher Maafin Kay</p>
-            <ul>
-              <!-- <li>🍓 1x </li> -->
-              <li>🤗 1x peluk lama lama</li>
-              <li>🌷 1x kay dengerin osi yapping bebas appun itu</li>
-            </ul>
-            <small>berlaku selamanya, tanpa batas waktu</small>
-          </div>
-        </div>
-      </div>
-      <p class="again">yeyyy udah dimaafin, lopyuuu sayangg!!! 💛</p>
-    </section>
-  </main>
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var icons=['🌸','💗','💛','🌷','✨','🍓'];
+  function petals(n){
+    for(var i=0;i<n;i++){
+      var p=document.createElement('span');p.className='petal';
+      p.textContent=icons[Math.floor(Math.random()*icons.length)];
+      p.style.left=Math.random()*100+'vw';
+      p.style.fontSize=14+Math.random()*18+'px';
+      p.style.animationDuration=4+Math.random()*4+'s';
+      p.style.animationDelay=Math.random()*1.5+'s';
+      document.body.appendChild(p);
+      (function(el){setTimeout(function(){el.remove()},10500)})(p);
+    }
+  }
 
-  <script>
-    (function () {
-      var $ = function (i) { return document.getElementById(i) };
-      var icons = ['🌸', '💗', '💛', '🌷', '✨', '🍓'];
-      function petals(n) {
-        for (var i = 0; i < n; i++) {
-          var p = document.createElement('span'); p.className = 'petal';
-          p.textContent = icons[Math.floor(Math.random() * icons.length)];
-          p.style.left = Math.random() * 100 + 'vw';
-          p.style.fontSize = 14 + Math.random() * 18 + 'px';
-          p.style.animationDuration = 4 + Math.random() * 4 + 's';
-          p.style.animationDelay = Math.random() * 1.5 + 's';
-          document.body.appendChild(p);
-          (function (el) { setTimeout(function () { el.remove() }, 10500) })(p);
-        }
-      }
+  $('env').addEventListener('click',function(){
+    this.classList.add('open');
+    setTimeout(function(){
+      $('s1').classList.add('hidden');$('s2').classList.remove('hidden');
+      var lines=document.querySelectorAll('.line');
+      lines.forEach(function(l,i){setTimeout(function(){l.classList.add('show')},700+i*1300)});
+      setTimeout(function(){$('actions').classList.add('show')},700+lines.length*1300);
+    },650);
+  });
 
-      $('env').addEventListener('click', function () {
-        this.classList.add('open');
-        setTimeout(function () {
-          $('s1').classList.add('hidden'); $('s2').classList.remove('hidden');
-          var lines = document.querySelectorAll('.line');
-          lines.forEach(function (l, i) { setTimeout(function () { l.classList.add('show') }, 700 + i * 1300) });
-          setTimeout(function () { $('actions').classList.add('show') }, 700 + lines.length * 1300);
-        }, 650);
-      });
+  var tries=0;
+  var nos=['yakin nih? 🥺','aku sedih loh…','satu kali aja deh 🥹','plisss sayang 💔','tombolnya kecil, hatiku besar 💗'];
+  $('no').addEventListener('click',function(){
+    tries++;
+    this.textContent=nos[Math.min(tries-1,nos.length-1)];
+    var y=$('yes');
+    y.style.transform='scale('+Math.min(1+tries*0.13,1.7)+')';
+    y.style.margin=(tries*5)+'px 0';
+    y.textContent=tries>2?'Iya iya, maafin 💗':'Iya, aku maafin 💗';
+  });
 
-      var tries = 0;
-      var nos = ['plisss? 🥺', 'kay sedih loh…', 'plisss maafin kay 🥹', 'plisss sayang 💔', 'gaboleh gitu 🥺'];
-      $('no').addEventListener('click', function () {
-        tries++;
-        this.textContent = nos[Math.min(tries - 1, nos.length - 1)];
-        var y = $('yes');
-        y.style.transform = 'scale(' + Math.min(1 + tries * 0.13, 1.7) + ')';
-        y.style.margin = (tries * 5) + 'px 0';
-        y.textContent = tries > 2 ? 'Iya iya, osi maafin 💗' : 'Iya, osi maafin 💗';
-      });
-
-      $('yes').addEventListener('click', function () {
-        $('s2').classList.add('hidden'); $('s3').classList.remove('hidden');
-        petals(36); setTimeout(function () { petals(24) }, 2200);
-        window.scrollTo(0, 0);
-      });
-    })();
-  </script>
+  $('yes').addEventListener('click',function(){
+    $('s2').classList.add('hidden');$('s3').classList.remove('hidden');
+    petals(36);setTimeout(function(){petals(24)},2200);
+    window.scrollTo(0,0);
+  });
+})();
+</script>
 </body>
-
 </html>
